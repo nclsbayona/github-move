@@ -1,0 +1,11 @@
+---
+apiVersion: getambassador.io/v2
+kind:  Mapping
+metadata:
+  name:  high-line-{{ .Release.Namespace }}-mapping
+  labels:
+    {{- include "high-line.labels" . | nindent 4 }}
+spec:
+  host: {{ .Values.publicSubdomain }}.upchieve.org
+  prefix: /
+  service: {{ include "high-line.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
