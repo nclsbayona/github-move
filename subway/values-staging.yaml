@@ -3,9 +3,10 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+workerReplicaCount: 1
 
 image:
-  repository: registry.gitlab.com/upchieve/subway/main
+  repository: registry.gitlab.com/upchieve/subway/add-time-tutored
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: c00cf96d3d526b28518c21d9901563f9df5f4dd7
