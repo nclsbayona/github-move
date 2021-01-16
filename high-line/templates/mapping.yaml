@@ -8,4 +8,5 @@ metadata:
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
+  timeout_ms: 500000
   service: {{ include "high-line.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
