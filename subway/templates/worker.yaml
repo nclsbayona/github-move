@@ -38,7 +38,7 @@ spec:
             - name: DOPPLER_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: subway-staging-doppler-token
+                  name: subway-{{ .Release.Namespace }}-doppler-token
                   key: DOPPLER_TOKEN
           resources:
             {{- toYaml .Values.workerResources | nindent 12 }}
