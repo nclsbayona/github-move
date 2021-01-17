@@ -15,7 +15,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-publicSubdomain: k8stest
+publicSubdomain: app
 
 serviceAccount:
   # Specifies whether a service account should be created
