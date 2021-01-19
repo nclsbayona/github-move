@@ -80,13 +80,13 @@ spec:
 apiVersion: getambassador.io/v2
 kind:  Mapping
 metadata:
-  name:  subway-{{ .Release.Namespace }}-mobile-mapping
+  name:  subway-{{ .Release.Namespace }}-setcookie-mapping
   labels:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /mobile/
-  rewrite: /mobile/
+  prefix: /setcookie/
+  rewrite: /setcookie/
   timeout_ms: 500000
   service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
