@@ -117,6 +117,9 @@ spec:
   service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
   allow_upgrade:
     - websocket
+  load_balancer:
+    policy: ring_hash
+    source_ip: true
 ---
 apiVersion: getambassador.io/v2
 kind:  Mapping
@@ -133,3 +136,6 @@ spec:
     transport: true
   allow_upgrade:
     - websocket
+  load_balancer:
+    policy: ring_hash
+    source_ip: true

@@ -13,6 +13,7 @@ spec:
     - port: {{ .Values.socketPort }}
       protocol: TCP
       name: socket
+  sessionAffinity: "ClientIP"
   selector:
     component: web
     {{- include "subway.selectorLabels" . | nindent 4 }}
