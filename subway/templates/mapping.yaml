@@ -104,6 +104,7 @@ spec:
   service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
   allow_upgrade:
     - websocket
+  resolver: endpoint
   load_balancer:
     policy: ring_hash
     source_ip: true
@@ -123,6 +124,7 @@ spec:
     transport: true
   allow_upgrade:
     - websocket
+  resolver: endpoint
   load_balancer:
     policy: ring_hash
     source_ip: true
