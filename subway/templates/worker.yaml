@@ -6,6 +6,7 @@ metadata:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.workerReplicaCount }}
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       component: worker
