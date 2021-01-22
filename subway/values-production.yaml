@@ -52,11 +52,11 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 1500m
-    memory: 1500Mi
-  requests:
     cpu: 500m
-    memory: 1Gi
+    memory: 600Mi
+  requests:
+    cpu: 150m
+    memory: 300Mi
 
 workerResources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -64,11 +64,11 @@ workerResources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 1500m
-    memory: 1500Mi
+    cpu: 300m
+    memory: 400Mi
   requests:
-    cpu: 500m
-    memory: 1Gi
+    cpu: 100m
+    memory: 200Mi
 
 autoscaling:
   enabled: false
