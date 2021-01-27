@@ -52,6 +52,8 @@ spec:
                 secretKeyRef:
                   name: high-line-{{ .Release.Namespace }}-doppler-token
                   key: DOPPLER_TOKEN
+            - name: HIGH_LINE_VERSION
+              value: {{ .Values.image.tag }}
           ports:
             - name: http
               containerPort: {{ .Values.httpPort }}
