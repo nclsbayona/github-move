@@ -33,8 +33,8 @@ metadata:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /metrics/
-  rewrite: /metrics/
+  prefix: /metrics
+  rewrite: /metrics
   timeout_ms: 500000
   service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
