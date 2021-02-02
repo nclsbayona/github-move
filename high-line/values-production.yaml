@@ -8,7 +8,7 @@ image:
   repository: registry.gitlab.com/upchieve/high-line/main
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: bddc1021d9f21d9f8d1923adc8abfd9b64b0e742
+  tag: 6dc7d9e3afb7e8626e7b8257c1327d9eda780ea2
 
 imagePullSecrets: []
 nameOverride: ""
