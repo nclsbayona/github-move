@@ -2,78 +2,12 @@
 apiVersion: getambassador.io/v2
 kind:  Mapping
 metadata:
-  name:  subway-{{ .Release.Namespace }}-api-mapping
+  name:  subway-{{ .Release.Namespace }}-mapping
   labels:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /api/
-  rewrite: /api/
-  timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
----
-apiVersion: getambassador.io/v2
-kind:  Mapping
-metadata:
-  name:  subway-{{ .Release.Namespace }}-auth-mapping
-  labels:
-    {{- include "subway.labels" . | nindent 4 }}
-spec:
-  host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /auth/
-  rewrite: /auth/
-  timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
----
-apiVersion: getambassador.io/v2
-kind:  Mapping
-metadata:
-  name:  subway-{{ .Release.Namespace }}-metrics-mapping
-  labels:
-    {{- include "subway.labels" . | nindent 4 }}
-spec:
-  host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /metrics
-  rewrite: /metrics
-  timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
----
-apiVersion: getambassador.io/v2
-kind:  Mapping
-metadata:
-  name:  subway-{{ .Release.Namespace }}-api-public-mapping
-  labels:
-    {{- include "subway.labels" . | nindent 4 }}
-spec:
-  host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /api-public/
-  rewrite: /api-public/
-  timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
----
-apiVersion: getambassador.io/v2
-kind:  Mapping
-metadata:
-  name:  subway-{{ .Release.Namespace }}-twiml-mapping
-  labels:
-    {{- include "subway.labels" . | nindent 4 }}
-spec:
-  host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /twiml/
-  rewrite: /twiml/
-  timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
----
-apiVersion: getambassador.io/v2
-kind:  Mapping
-metadata:
-  name:  subway-{{ .Release.Namespace }}-setcookie-mapping
-  labels:
-    {{- include "subway.labels" . | nindent 4 }}
-spec:
-  host: {{ .Values.publicSubdomain }}.upchieve.org
-  prefix: /setcookie
-  rewrite: /setcookie
+  prefix: /
   timeout_ms: 500000
   service: {{ include "subway.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
