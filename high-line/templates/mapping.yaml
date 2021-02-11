@@ -1,0 +1,26 @@
+# ---
+# apiVersion: getambassador.io/v2
+# kind:  Mapping
+# metadata:
+#   name:  high-line-{{ .Release.Namespace }}-mapping
+#   labels:
+#     {{- include "high-line.labels" . | nindent 4 }}
+# spec:
+#   host: {{ .Values.publicSubdomain }}.upchieve.org
+#   prefix: /
+#   timeout_ms: 500000
+#   service: {{ include "high-line.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
+# ---
+# apiVersion: getambassador.io/v2
+# kind:  Mapping
+# metadata:
+#   name:  high-line-{{ .Release.Namespace }}-health-mapping
+#   labels:
+#     {{- include "high-line.labels" . | nindent 4 }}
+# spec:
+#   host: {{ .Values.publicSubdomain }}.upchieve.org
+#   prefix: /high-line/healthz/
+#   rewrite: /healthz/
+#   timeout_ms: 500000
+#   service: {{ include "high-line.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.httpPort }}
+  

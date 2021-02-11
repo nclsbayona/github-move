@@ -2,7 +2,7 @@
 apiVersion: getambassador.io/v2
 kind:  Mapping
 metadata:
-  name:  subway-{{ .Release.Namespace }}-mapping
+  name:  subway-{{ .Release.Namespace }}-api-mapping
   labels:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
