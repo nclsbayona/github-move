@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Rollout
+metadata:
+  name: subway-rollouts-test
+  labels:
+    app.kubernetes.io/instance: subway-rollouts-test
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: subway
+    app.kubernetes.io/version: 0.0.1
+    helm.sh/chart: subway-0.1.0
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      component: web
+      app.kubernetes.io/instance: subway-rollouts-test
+      app.kubernetes.io/name: subway
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        component: web
+        app.kubernetes.io/instance: subway-rollouts-test
+        app.kubernetes.io/name: subway
+    spec:
+      serviceAccountName: subway-rollouts-test
+      securityContext:
+        fsGroup: 2000
+      containers:
+        - name: subway
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilsystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+          image: 
+          imagePullPolicy: IfNotPresent
+          command:
+            - web
+          env:
+            - name: DOPPLER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: subway-rollouts-test-doppler-token
+                  key: DOPPLER_TOKEN
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+            - name: socket
+              containerPort: 3001
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+          resources:
+            limits:
+              cpu: 250m
+              memory: 300Mi
+            requests:
+              cpu: 100m
+              memory: 150Mi
+      volumes:
+        - name: tmp
+          emptyDir:
+            medium: "Memory"
