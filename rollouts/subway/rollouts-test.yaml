@@ -1,83 +1,235 @@
 apiVersion: apps/v1
 kind: Rollout
 metadata:
-  name: subway-rollouts-test
+  creationTimestamp: null
   labels:
     app.kubernetes.io/instance: subway-rollouts-test
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: subway
     app.kubernetes.io/version: 0.0.1
     helm.sh/chart: subway-0.1.0
+  name: subway-rollouts-test
 spec:
   replicas: 2
   revisionHistoryLimit: 5
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
   selector:
     matchLabels:
-      component: web
       app.kubernetes.io/instance: subway-rollouts-test
       app.kubernetes.io/name: subway
+      component: web
+  strategy:
+    canary:
+      steps:
+      - setWeight: 2
+      - pause:
+          duration: 72
+      - setWeight: 4
+      - pause:
+          duration: 72
+      - setWeight: 6
+      - pause:
+          duration: 72
+      - setWeight: 8
+      - pause:
+          duration: 72
+      - setWeight: 10
+      - pause:
+          duration: 72
+      - setWeight: 12
+      - pause:
+          duration: 72
+      - setWeight: 14
+      - pause:
+          duration: 72
+      - setWeight: 16
+      - pause:
+          duration: 72
+      - setWeight: 18
+      - pause:
+          duration: 72
+      - setWeight: 20
+      - pause:
+          duration: 72
+      - setWeight: 22
+      - pause:
+          duration: 72
+      - setWeight: 24
+      - pause:
+          duration: 72
+      - setWeight: 26
+      - pause:
+          duration: 72
+      - setWeight: 28
+      - pause:
+          duration: 72
+      - setWeight: 30
+      - pause:
+          duration: 72
+      - setWeight: 32
+      - pause:
+          duration: 72
+      - setWeight: 34
+      - pause:
+          duration: 72
+      - setWeight: 36
+      - pause:
+          duration: 72
+      - setWeight: 38
+      - pause:
+          duration: 72
+      - setWeight: 40
+      - pause:
+          duration: 72
+      - setWeight: 42
+      - pause:
+          duration: 72
+      - setWeight: 44
+      - pause:
+          duration: 72
+      - setWeight: 46
+      - pause:
+          duration: 72
+      - setWeight: 48
+      - pause:
+          duration: 72
+      - setWeight: 50
+      - pause:
+          duration: 72
+      - setWeight: 52
+      - pause:
+          duration: 72
+      - setWeight: 54
+      - pause:
+          duration: 72
+      - setWeight: 56
+      - pause:
+          duration: 72
+      - setWeight: 58
+      - pause:
+          duration: 72
+      - setWeight: 60
+      - pause:
+          duration: 72
+      - setWeight: 62
+      - pause:
+          duration: 72
+      - setWeight: 64
+      - pause:
+          duration: 72
+      - setWeight: 66
+      - pause:
+          duration: 72
+      - setWeight: 68
+      - pause:
+          duration: 72
+      - setWeight: 70
+      - pause:
+          duration: 72
+      - setWeight: 72
+      - pause:
+          duration: 72
+      - setWeight: 74
+      - pause:
+          duration: 72
+      - setWeight: 76
+      - pause:
+          duration: 72
+      - setWeight: 78
+      - pause:
+          duration: 72
+      - setWeight: 80
+      - pause:
+          duration: 72
+      - setWeight: 82
+      - pause:
+          duration: 72
+      - setWeight: 84
+      - pause:
+          duration: 72
+      - setWeight: 86
+      - pause:
+          duration: 72
+      - setWeight: 88
+      - pause:
+          duration: 72
+      - setWeight: 90
+      - pause:
+          duration: 72
+      - setWeight: 92
+      - pause:
+          duration: 72
+      - setWeight: 94
+      - pause:
+          duration: 72
+      - setWeight: 96
+      - pause:
+          duration: 72
+      - setWeight: 98
+      - pause:
+          duration: 72
+      - setWeight: 100
+      - pause:
+          duration: 72
   template:
     metadata:
       annotations:
         linkerd.io/inject: enabled
+      creationTimestamp: null
       labels:
-        component: web
         app.kubernetes.io/instance: subway-rollouts-test
         app.kubernetes.io/name: subway
+        component: web
     spec:
-      serviceAccountName: subway-rollouts-test
+      containers:
+      - command:
+        - web
+        env:
+        - name: DOPPLER_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: DOPPLER_TOKEN
+              name: subway-rollouts-test-doppler-token
+        image: latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        name: subway
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        - containerPort: 3001
+          name: socket
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        resources:
+          limits:
+            cpu: 250m
+            memory: 300Mi
+          requests:
+            cpu: 100m
+            memory: 150Mi
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
       securityContext:
         fsGroup: 2000
-      containers:
-        - name: subway
-          volumeMounts:
-            - mountPath: /tmp
-              name: tmp
-          securityContext:
-            capabilities:
-              drop:
-                - ALL
-            readOnlyRootFilsystem: true
-            runAsNonRoot: true
-            runAsUser: 1000
-          image: 
-          imagePullPolicy: IfNotPresent
-          command:
-            - web
-          env:
-            - name: DOPPLER_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: subway-rollouts-test-doppler-token
-                  key: DOPPLER_TOKEN
-          ports:
-            - name: http
-              containerPort: 3000
-              protocol: TCP
-            - name: socket
-              containerPort: 3001
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: http
-          resources:
-            limits:
-              cpu: 250m
-              memory: 300Mi
-            requests:
-              cpu: 100m
-              memory: 150Mi
+      serviceAccountName: subway-rollouts-test
       volumes:
-        - name: tmp
-          emptyDir:
-            medium: "Memory"
+      - emptyDir:
+          medium: Memory
+        name: tmp
+status:
+  blueGreen: {}
+  canary: {}
