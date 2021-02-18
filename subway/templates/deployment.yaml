@@ -59,7 +59,7 @@ spec:
             - name: socket
               containerPort: {{ .Values.socketPort }}
               protocol: TCP
-          # Let the app start up, check every 5 seconds, 30 times
+          # Let the app start up, check every 6 seconds, 10 times
           # as soon as this comes back healthy k8s will move
           # to readiness and liveness probes. It has a minute to start.
           startupProbe:
