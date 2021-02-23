@@ -61,14 +61,35 @@ spec:
             - name: socket
               containerPort: {{ .Values.socketPort }}
               protocol: TCP
-          livenessProbe:
+          # Let the app start up, check every 6 seconds, 10 times
+          # as soon as this comes back healthy k8s will move
+          # to readiness and liveness probes. It has a minute to start.
+          startupProbe:
             httpGet:
               path: /healthz
               port: http
+            failureThreshold: 10
+            periodSeconds: 6
+          # If the app fails a readiness check 3 times in a row
+          # k8s will stop sending traffic, but won't restart the
+          # pod, to give it a chance to recover.
           readinessProbe:
             httpGet:
               path: /healthz
               port: http
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+          # If it fails this 3 more times than readiness, the pod
+          # will get restarted. we're essentially giving it 15
+          # seconds to recover before getting restarted.
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 5
+            failureThreshold: 6
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
