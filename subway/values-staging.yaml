@@ -5,11 +5,7 @@
 replicaCount: 2
 workerReplicaCount: 1
 
-image:
-  repository: registry.gitlab.com/upchieve/subway/main
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: d3788a84ec7aca197c3eb110cc345b242e41c795
+imagePullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -83,3 +79,26 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Ambassador Labs: Do not modify the lines bellow this section as they are dynamically generated
+
+ambassador:
+  rollouts:
+    replicas: 2
+    image:
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: d3788a84ec7aca197c3eb110cc345b242e41c795
+    annotations:
+      getambassador.io/webhookUrl: "https://app.getambassador.io/webhooks/rollout"
+      getambassador.io/rolloutId: "12fhfb323jn32kjh3nbk"
+    steps: |
+      steps:
+      - setWeight: 30
+      - pause:
+          duration: 1200
+      - setWeight: 60
+      - pause:
+          duration: 1200
+      - setWeight: 90
+      - pause:
+          duration: 1200

@@ -1,19 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: {{ include "subway.fullname" . }}
   labels:
     {{- include "subway.labels" . | nindent 4 }}
+  annotations:
+    {{ toYaml .Values.ambassador.rollouts.annotations | nindent 4}}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.ambassador.rollouts.replicas }}
 {{- end }}
   revisionHistoryLimit: 5
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: {{ .Values.maxUnavailable }}
-      maxSurge: {{ .Values.maxSurge }}
+    canary:
+      canaryService: {{ include "subway.fullname" . }}-canary
+      stableService: {{ include "subway.fullname" . }}-stable
+      steps:
+      {{ toYaml .Values.ambassador.rollouts.steps | nindent 8}}
   selector:
     matchLabels:
       component: web
@@ -42,8 +45,8 @@ spec:
               name: tmp
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.ambassador.rollouts.image.repository }}:{{ .Values.ambassador.rollouts.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           command:
             - web
           env:
