@@ -9,7 +9,7 @@ image:
   repository: registry.gitlab.com/upchieve/subway/main
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 24845b9aa87713f20b10ee4b2512c03d6892a30b
+  tag: 3b074aa2993625ba729cd26ca56ed83ca7da107c
 
 imagePullSecrets: []
 nameOverride: ""
