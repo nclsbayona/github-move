@@ -83,7 +83,8 @@ tolerations: []
 
 affinity: {}
 
-# Ambassador Labs: Do not modify the lines bellow this section as they are dynamically generated
+# ---------------------------------------------------------------------------------------------
+# Ambassador Labs: Do not modify the lines below this section as they are dynamically generated
 
 ambassador:
   rollouts:
