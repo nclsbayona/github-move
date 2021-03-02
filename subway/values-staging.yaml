@@ -92,8 +92,7 @@ ambassador:
     annotations:
       getambassador.io/webhookUrl: "https://app.getambassador.io/webhooks/rollout"
       getambassador.io/rolloutId: "12fhfb323jn32kjh3nbk"
-    steps: |
-      steps:
+    steps:
       - setWeight: 30
       - pause:
           duration: 1200
