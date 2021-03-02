@@ -60,7 +60,7 @@ spec:
                   name: subway-{{ .Release.Namespace }}-doppler-token
                   key: DOPPLER_TOKEN
             - name: SUBWAY_VERSION
-              value: {{ .Values.image.tag }}
+              value: {{ .Values.ambassador.rollouts.image.tag }}
           ports:
             - name: http
               containerPort: {{ .Values.httpPort }}
