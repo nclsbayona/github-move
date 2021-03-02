@@ -4,8 +4,10 @@ metadata:
   name: {{ include "subway.fullname" . }}
   labels:
     {{- include "subway.labels" . | nindent 4 }}
+  {{- with .Values.ambassador.rollouts.annotations }}
   annotations:
-    {{ toYaml .Values.ambassador.rollouts.annotations | nindent 4}}
+    {{- toYaml . | nindent 4}}
+  {{- end}}
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.ambassador.rollouts.replicas }}
@@ -15,8 +17,10 @@ spec:
     canary:
       canaryService: {{ include "subway.fullname" . }}-canary
       stableService: {{ include "subway.fullname" . }}-stable
+      {{- with .Values.ambassador.rollouts.steps }}
       steps:
-      {{ toYaml .Values.ambassador.rollouts.steps | nindent 8}}
+      {{- toYaml . | nindent 8}}
+      {{- end}}
   selector:
     matchLabels:
       component: web
