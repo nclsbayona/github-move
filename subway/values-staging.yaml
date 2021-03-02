@@ -82,23 +82,19 @@ affinity: {}
 
 # ---------------------------------------------------------------------------------------------
 # Ambassador Labs: Do not modify the lines below this section as they are dynamically generated
-
 ambassador:
   rollouts:
-    replicas: 2
+    annotations:
+      getambassador.io/rolloutId: 355581bf-d3e4-4d00-9db7-2c2b2e43cbb4
+      getambassador.io/webhookUrl: https://app.getambassador.io/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/main
-      tag: d3788a84ec7aca197c3eb110cc345b242e41c795
-    annotations:
-      getambassador.io/webhookUrl: "https://app.getambassador.io/webhooks/rollout"
-      getambassador.io/rolloutId: "12fhfb323jn32kjh3nbk"
+      tag: 090d0d09ffd06f2f704444ce7d9e23c578e057d3
+    replicas: 2
     steps:
-      - setWeight: 30
-      - pause:
-          duration: 1200
-      - setWeight: 60
-      - pause:
-          duration: 1200
-      - setWeight: 90
-      - pause:
-          duration: 1200
+    - setWeight: 50
+    - pause:
+        duration: 40
+    - setWeight: 100
+    - pause:
+        duration: 40
