@@ -17,6 +17,9 @@ spec:
     canary:
       canaryService: {{ include "subway.fullname" . }}-canary
       stableService: {{ include "subway.fullname" . }}-stable
+      trafficRouting:
+        ambassador:
+          mapping: subway-{{ .Release.Namespace }}-mapping
       {{- with .Values.ambassador.rollouts.steps }}
       steps:
       {{- toYaml . | nindent 8}}
