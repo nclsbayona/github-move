@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-workerReplicaCount: 1
+workerReplicaCount: 0
 
 image:
   repository: registry.gitlab.com/upchieve/subway/main
