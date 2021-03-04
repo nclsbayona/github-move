@@ -9,7 +9,7 @@ spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
   timeout_ms: 500000
-  weight: 100
+  resolver: endpoint
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
 apiVersion: getambassador.io/v2
@@ -23,7 +23,7 @@ spec:
   prefix: /whiteboard/reset/
   rewrite: /whiteboard/reset/
   timeout_ms: 500000
-  weight: 100
+  resolver: endpoint
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
 apiVersion: getambassador.io/v2
@@ -37,7 +37,6 @@ spec:
   prefix: /whiteboard/
   rewrite: /whiteboard/
   timeout_ms: 500000
-  weight: 100
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
   allow_upgrade:
     - websocket
@@ -56,7 +55,6 @@ spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
   timeout_ms: 500000
-  weight: 100
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.socketPort }}
   query_parameters:
     transport: true
