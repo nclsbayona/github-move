@@ -89,7 +89,7 @@ spec:
               port: http
             initialDelaySeconds: 60
             periodSeconds: 5
-            failureThreshold: 6
+            failureThreshold: 20
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
