@@ -19,7 +19,7 @@ spec:
       stableService: {{ include "subway.fullname" . }}-stable
       trafficRouting:
         ambassador:
-          mapping: subway-{{ .Release.Namespace }}-mapping
+          mapping: subway-{{ .Release.Namespace }}-mapping-stable
       {{- with .Values.ambassador.rollouts.steps }}
       steps:
       {{- toYaml . | nindent 8}}
