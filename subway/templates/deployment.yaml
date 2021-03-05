@@ -72,9 +72,10 @@ spec:
             periodSeconds: 6
             timeoutSeconds: 1
             successThreshold: 1
-          # If the app fails a readiness check 3 times in a row
+          # If the app fails a readiness check 2 times (20 seconds) in a row
           # k8s will stop sending traffic, but won't restart the
-          # pod, to give it a chance to recover.
+          # pod, to give it a chance to recover. Requests have 3
+          # seconds to finish.
           readinessProbe:
             httpGet:
               path: /healthz
@@ -83,9 +84,10 @@ spec:
             periodSeconds: 10
             failureThreshold: 2
             timeoutSeconds: 3
-          # If it fails this 3 more times than readiness, the pod
+          # If it fails this 8 more times than readiness (100 seconds) the pod
           # will get restarted. we're essentially giving it 15
-          # seconds to recover before getting restarted.
+          # seconds to recover before getting restarted. Requests
+          # have 3 seconds to finish.
           livenessProbe:
             httpGet:
               path: /healthz
