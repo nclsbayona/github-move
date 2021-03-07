@@ -11,7 +11,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-publicSubdomain: staging
+publicSubdomain: demo
 
 serviceAccount:
   # Specifies whether a service account should be created
