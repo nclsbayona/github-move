@@ -2,20 +2,20 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
-workerReplicaCount: 1
+replicaCount: 1
+workerReplicaCount: 0
 
 image:
   repository: registry.gitlab.com/upchieve/subway/main
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 9a6ecf79a63d7c18940dcee77ffb333a3f5bdb23
+  tag: d3788a84ec7aca197c3eb110cc345b242e41c795
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-publicSubdomain: app
+publicSubdomain: demo
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -28,6 +28,7 @@ serviceAccount:
 
 podAnnotations:
   'linkerd.io/inject': enabled
+  'getambassador.io/inject-traffic-agent': enabled
 
 podSecurityContext:
   fsGroup: 2000
@@ -52,11 +53,11 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 500m
-    memory: 600Mi
-  requests:
-    cpu: 150m
+    cpu: 250m
     memory: 300Mi
+  requests:
+    cpu: 100m
+    memory: 150Mi
 
 workerResources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -64,11 +65,11 @@ workerResources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 300m
-    memory: 400Mi
+    cpu: 250m
+    memory: 300Mi
   requests:
     cpu: 100m
-    memory: 200Mi
+    memory: 150Mi
 
 autoscaling:
   enabled: false
@@ -82,26 +83,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-# ---------------------------------------------------------------------------------------------
-# Ambassador Labs: Do not modify the lines below this section as they are dynamically generated
-
-ambassador:
-  rollouts:
-    replicas: 2
-    image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: d3788a84ec7aca197c3eb110cc345b242e41c795
-    annotations:
-      getambassador.io/webhookUrl: "https://app.getambassador.io/webhooks/rollout"
-      getambassador.io/rolloutId: "12fhfb323jn32kjh3nbk"
-    steps:
-      - setWeight: 30
-      - pause:
-          duration: 1200
-      - setWeight: 60
-      - pause:
-          duration: 1200
-      - setWeight: 90
-      - pause:
-          duration: 1200

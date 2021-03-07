@@ -10,6 +10,8 @@ spec:
   prefix: /
   timeout_ms: 500000
   resolver: endpoint
+  load_balancer:
+    policy: least_request
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
 apiVersion: getambassador.io/v2
@@ -24,6 +26,9 @@ spec:
   rewrite: /whiteboard/reset/
   timeout_ms: 500000
   resolver: endpoint
+  load_balancer:
+    policy: ring_hash
+    source_ip: true
   service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
 ---
 apiVersion: getambassador.io/v2
