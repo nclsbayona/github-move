@@ -92,12 +92,18 @@ ambassador:
       getambassador.io/webhookUrl: "https://app.getambassador.io/webhooks/rollout"
       getambassador.io/rolloutId: "12fhfb323jn32kjh3nbk"
     steps:
-      - setWeight: 30
+      - setWeight: 20
       - pause:
-          duration: 1200
+          duration: 14
+      - setWeight: 40
+      - pause:
+          duration: 14
       - setWeight: 60
       - pause:
-          duration: 1200
-      - setWeight: 90
+          duration: 14
+      - setWeight: 80
       - pause:
-          duration: 1200
+          duration: 14
+      - setWeight: 100
+      - pause:
+          duration: 14
