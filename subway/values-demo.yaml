@@ -5,11 +5,7 @@
 replicaCount: 1
 workerReplicaCount: 0
 
-image:
-  repository: registry.gitlab.com/upchieve/subway/main
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: d3788a84ec7aca197c3eb110cc345b242e41c795
+imagePullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
@@ -36,7 +32,7 @@ podSecurityContext:
 securityContext:
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
@@ -83,3 +79,31 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# ---------------------------------------------------------------------------------------------
+# Ambassador Labs: Do not modify the lines below this section as they are dynamically generated
+ambassador:
+  rollouts:
+    annotations:
+      getambassador.io/rolloutId: f0f26065-4e82-448e-be11-62ba4005f3bf
+      getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
+    image:
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 9a6ecf79a63d7c18940dcee77ffb333a3f5bdb23
+    replicas: 2
+    steps:
+      - setWeight: 20
+      - pause:
+          duration: 14
+      - setWeight: 40
+      - pause:
+          duration: 14
+      - setWeight: 60
+      - pause:
+          duration: 14
+      - setWeight: 80
+      - pause:
+          duration: 14
+      - setWeight: 100
+      - pause:
+          duration: 14
