@@ -89,7 +89,7 @@ ambassador:
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/main
-      tag: 090d0d09ffd06f2f704444ce7d9e23c578e057d3
+      tag: 9a6ecf79a63d7c18940dcee77ffb333a3f5bdb23
     replicas: 2
     steps:
       - setWeight: 20
