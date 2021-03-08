@@ -11,6 +11,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+podDisruptionBudget:
+  enabled: true
+
 publicSubdomain: app
 
 serviceAccount:
