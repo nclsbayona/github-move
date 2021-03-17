@@ -20,9 +20,9 @@ spec:
       trafficRouting:
         ambassador:
           mappings:
-            - subway-{{ .Release.Namespace }}-whiteboard-reset-stable-mapping
-            - subway-{{ .Release.Namespace }}-whiteboard-stable-mapping
-            - subway-{{ .Release.Namespace }}-socket-stable-mapping
+            - subway-{{ .Release.Namespace }}-whiteboard-reset-mapping
+            - subway-{{ .Release.Namespace }}-whiteboard-mapping
+            - subway-{{ .Release.Namespace }}-socket-mapping
       {{- with .Values.ambassador.rollouts.steps }}
       steps:
       {{- toYaml . | nindent 8}}
