@@ -31,7 +31,7 @@ spec:
     matchLabels:
       component: web
       traffic: socket
-  {{- include "subway.selectorLabels" . | nindent 8 }}
+  {{- include "subway.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
