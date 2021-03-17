@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "subway.fullname" . }}
+  name: {{ include "subway.fullname" . }}-rest
   labels:
     {{- include "subway.labels" . | nindent 4 }}
   {{- with .Values.ambassador.rollouts.annotations }}
@@ -15,15 +15,12 @@ spec:
   revisionHistoryLimit: 5
   strategy:
     canary:
-      canaryService: {{ include "subway.fullname" . }}-canary
-      stableService: {{ include "subway.fullname" . }}-stable
+      canaryService: {{ include "subway.fullname" . }}-rest-canary
+      stableService: {{ include "subway.fullname" . }}-rest
       trafficRouting:
         ambassador:
           mappings:
-           - subway-{{ .Release.Namespace }}-stable-mapping
-           - subway-{{ .Release.Namespace }}-whiteboard-reset-stable-mapping
-           - subway-{{ .Release.Namespace }}-whiteboard-stable-mapping
-           - subway-{{ .Release.Namespace }}-socket-stable-mapping
+           - subway-{{ .Release.Namespace }}-rest-mapping
       {{- with .Values.ambassador.rollouts.steps }}
       steps:
       {{- toYaml . | nindent 8}}
@@ -31,7 +28,8 @@ spec:
   selector:
     matchLabels:
       component: web
-      {{- include "subway.selectorLabels" . | nindent 6 }}
+      traffic: rest
+      {{- include "subway.selectorLabels" . | nindent 8 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -40,6 +38,7 @@ spec:
     {{- end }}
       labels:
         component: web
+        traffic: rest
         {{- include "subway.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
