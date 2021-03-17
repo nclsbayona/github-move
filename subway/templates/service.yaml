@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "subway.fullname" . }}-stable
+  name: {{ include "subway.fullname" . }}-rest
   labels:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
@@ -16,12 +16,13 @@ spec:
       name: socket
   selector:
     component: web
+    traffic: rest
     {{- include "subway.selectorLabels" . | nindent 4 }}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "subway.fullname" . }}-canary
+  name: {{ include "subway.fullname" . }}-rest-canary
   labels:
     {{- include "subway.labels" . | nindent 4 }}
 spec:
@@ -35,4 +36,45 @@ spec:
       name: socket
   selector:
     component: web
+    traffic: rest
     {{- include "subway.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "subway.fullname" . }}-socket
+  labels:
+  {{- include "subway.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.httpPort }}
+      protocol: TCP
+      name: http
+    - port: {{ .Values.socketPort }}
+      protocol: TCP
+      name: socket
+  selector:
+    component: web
+    traffic: socket
+  {{- include "subway.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "subway.fullname" . }}-socket-canary
+  labels:
+  {{- include "subway.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.httpPort }}
+      protocol: TCP
+      name: http
+    - port: {{ .Values.socketPort }}
+      protocol: TCP
+      name: socket
+  selector:
+    component: web
+    traffic: socket
+  {{- include "subway.selectorLabels" . | nindent 4 }}
