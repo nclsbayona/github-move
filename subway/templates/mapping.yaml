@@ -12,7 +12,7 @@ spec:
   resolver: endpoint
   load_balancer:
     policy: least_request
-  service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
+  service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
 ---
 apiVersion: getambassador.io/v2
 kind:  Mapping
@@ -29,7 +29,7 @@ spec:
   load_balancer:
     policy: ring_hash
     source_ip: true
-  service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
+  service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
 ---
 apiVersion: getambassador.io/v2
 kind:  Mapping
@@ -42,13 +42,17 @@ spec:
   prefix: /whiteboard/
   rewrite: /whiteboard/
   timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}
+  service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
   allow_upgrade:
     - websocket
   resolver: endpoint
   load_balancer:
     policy: ring_hash
     source_ip: true
+  keepalive:
+    time: 7200
+    interval: 75
+    probes: 9
 ---
 apiVersion: getambassador.io/v2
 kind:  Mapping
@@ -60,7 +64,7 @@ spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
   timeout_ms: 500000
-  service: {{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.socketPort }}
+  service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.socketPort }}"
   query_parameters:
     transport: true
   allow_upgrade:
@@ -69,3 +73,7 @@ spec:
   load_balancer:
     policy: ring_hash
     source_ip: true
+  keepalive:
+    time: 7200
+    interval: 75
+    probes: 9
