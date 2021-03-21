@@ -9,9 +9,6 @@ spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
   timeout_ms: 500000
-  resolver: endpoint
-  load_balancer:
-    policy: least_request
   service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
 ---
 apiVersion: getambassador.io/v2
@@ -25,9 +22,6 @@ spec:
   prefix: /whiteboard/reset/
   rewrite: /whiteboard/reset/
   timeout_ms: 500000
-  resolver: endpoint
-  load_balancer:
-    policy: least_request
   service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
 ---
 apiVersion: getambassador.io/v2
@@ -44,9 +38,6 @@ spec:
   service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
   allow_upgrade:
     - websocket
-  resolver: endpoint
-  load_balancer:
-    policy: least_request
   keepalive:
     time: 7200
     interval: 75
@@ -67,9 +58,6 @@ spec:
     transport: true
   allow_upgrade:
     - websocket
-  resolver: endpoint
-  load_balancer:
-    policy: least_request
   keepalive:
     time: 7200
     interval: 75
