@@ -27,8 +27,7 @@ spec:
   timeout_ms: 500000
   resolver: endpoint
   load_balancer:
-    policy: ring_hash
-    source_ip: true
+    policy: least_request
   service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
 ---
 apiVersion: getambassador.io/v2
@@ -47,8 +46,7 @@ spec:
     - websocket
   resolver: endpoint
   load_balancer:
-    policy: ring_hash
-    source_ip: true
+    policy: least_request
   keepalive:
     time: 7200
     interval: 75
@@ -71,8 +69,7 @@ spec:
     - websocket
   resolver: endpoint
   load_balancer:
-    policy: ring_hash
-    source_ip: true
+    policy: least_request
   keepalive:
     time: 7200
     interval: 75
