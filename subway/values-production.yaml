@@ -80,7 +80,20 @@ nodeSelector: {}
 
 tolerations: []
 
-affinity: {}
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: component
+              operator: In
+              values:
+                - web
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - subway-production
+        topologyKey: "kubernetes.io/hostname"
 
 # ---------------------------------------------------------------------------------------------
 # Ambassador Labs: Do not modify the lines below this section as they are dynamically generated
