@@ -87,16 +87,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 775e34ad-be30-46dd-8996-bd5d8f93b3f8
+      getambassador.io/rolloutId: e9215d06-738a-4291-aa5e-0c7e3b13ce18
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/increase-ping-timeout
-      tag: 76182210fb4334e81659c45d5927d1320913feae
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 10ac7d8e12ba8dbb2653050c98d6295ae32383d7
     replicas: 3
     steps:
     - setWeight: 50
     - pause:
-        duration: 300
+        duration: 40
     - setWeight: 100
     - pause:
-        duration: 300
+        duration: 40
