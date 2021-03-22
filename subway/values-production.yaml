@@ -87,13 +87,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 755a22c9-8f5c-4df4-9009-7d51c139b6bc
+      getambassador.io/rolloutId: 775e34ad-be30-46dd-8996-bd5d8f93b3f8
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: bfc5171561b38cc1255a9fec5cb15757fdbc8786
-    replicas: 2
+      repository: registry.gitlab.com/upchieve/subway/increase-ping-timeout
+      tag: 76182210fb4334e81659c45d5927d1320913feae
+    replicas: 3
     steps:
-    - setWeight: 90
+    - setWeight: 50
     - pause:
-        duration: 10
+        duration: 300
+    - setWeight: 100
+    - pause:
+        duration: 300
