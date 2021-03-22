@@ -38,6 +38,9 @@ spec:
   service: "{{ include "subway.fullname" . }}-stable.{{ .Release.Namespace }}:{{ .Values.httpPort }}"
   allow_upgrade:
     - websocket
+  resolver: endpoint
+  load_balancer:
+    policy: maglev
   keepalive:
     time: 7200
     interval: 75
@@ -58,6 +61,9 @@ spec:
     transport: true
   allow_upgrade:
     - websocket
+  resolver: endpoint
+  load_balancer:
+    policy: maglev
   keepalive:
     time: 7200
     interval: 75
