@@ -29,7 +29,7 @@ kind:  Mapping
 metadata:
   name:  subway-{{ .Release.Namespace }}-whiteboard-stable-mapping
   labels:
-    {{- include "subway.labels" . | nindent 4 }}
+  {{- include "subway.labels" . | nindent 4 }}
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /whiteboard/
@@ -41,6 +41,9 @@ spec:
   resolver: endpoint
   load_balancer:
     policy: maglev
+    cookie:
+      name: upchieve-sticky-session
+      ttl: 3600s
   keepalive:
     time: 7200
     interval: 75
@@ -51,7 +54,7 @@ kind:  Mapping
 metadata:
   name:  subway-{{ .Release.Namespace }}-socket-stable-mapping
   labels:
-    {{- include "subway.labels" . | nindent 4 }}
+  {{- include "subway.labels" . | nindent 4 }}
 spec:
   host: {{ .Values.publicSubdomain }}.upchieve.org
   prefix: /
@@ -64,6 +67,9 @@ spec:
   resolver: endpoint
   load_balancer:
     policy: maglev
+    cookie:
+      name: upchieve-sticky-session
+      ttl: 3600s
   keepalive:
     time: 7200
     interval: 75
