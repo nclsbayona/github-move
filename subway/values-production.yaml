@@ -83,7 +83,7 @@ tolerations: []
 
 affinity:
   podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
+    preferredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
             - key: component
