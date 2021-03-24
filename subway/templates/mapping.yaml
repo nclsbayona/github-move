@@ -44,10 +44,6 @@ spec:
     cookie:
       name: upchieve-sticky-session
       ttl: 3600s
-  keepalive:
-    time: 7200
-    interval: 75
-    probes: 9
 ---
 apiVersion: getambassador.io/v2
 kind:  Mapping
@@ -70,7 +66,3 @@ spec:
     cookie:
       name: upchieve-sticky-session
       ttl: 3600s
-  keepalive:
-    time: 7200
-    interval: 75
-    probes: 9
