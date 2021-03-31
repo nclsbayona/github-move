@@ -79,7 +79,11 @@ autoscaling:
 nodeSelector:
   "upchieve.org/usage": "compute"
 
-tolerations: []
+tolerations:
+- key: upchieve.org/purpose
+  operator: Equal
+  value: apps
+  effect: NoSchedule
 
 affinity:
 #  podAntiAffinity:
