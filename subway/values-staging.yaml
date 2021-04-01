@@ -89,16 +89,25 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 2d1797bd-ad11-4311-87fe-7e40a7fd77c8
+      getambassador.io/rolloutId: 8c10a3bb-e728-4546-b697-549024c133d4
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: a74ba6c9a80012059f2325305d62689958ff26a0
-    replicas: 2
+      repository: registry.gitlab.com/upchieve/subway/546-547-convert-dbutils-add-prealgebra-cert-referral-code-to-ts
+      tag: ee7f713e2d135600ba3508dc94b8ccf1a13a8b25
+    replicas: 3
     steps:
-    - setWeight: 50
+    - setWeight: 20
     - pause:
-        duration: 45
+        duration: 240
+    - setWeight: 40
+    - pause:
+        duration: 240
+    - setWeight: 60
+    - pause:
+        duration: 240
+    - setWeight: 80
+    - pause:
+        duration: 240
     - setWeight: 100
     - pause:
-        duration: 45
+        duration: 240
