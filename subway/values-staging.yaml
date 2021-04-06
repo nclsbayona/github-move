@@ -89,16 +89,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 22383b59-16fe-4f18-a7ef-f8a7110f3fc0
+      getambassador.io/rolloutId: 5a6f485f-df10-4786-9e66-cee089d049f3
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/switch-to-ioredis
-      tag: 3a934bdda12026e14794bbe36a66a53fe957899f
-    replicas: 2
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 553ec180f660490a68eb51b06ef0f5930f2c3cb1
+    replicas: 1
     steps:
     - setWeight: 50
     - pause:
-        duration: 45
+        duration: 5
     - setWeight: 100
     - pause:
-        duration: 45
+        duration: 5
