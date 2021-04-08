@@ -89,11 +89,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 92da0667-2c4c-4fbf-9349-39823bd5b808
+      getambassador.io/rolloutId: e6c0f9a7-ded4-4eca-9617-6e2955206606
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/button-types
-      tag: b2f56f37f5fb10e94a308ff1a2f6edf0243863a5
+      repository: registry.gitlab.com/upchieve/subway/volunteer-verification-test
+      tag: 4ece5096de25500e652088fd3f7a74c8c4598b84
     replicas: 1
     steps:
     - setWeight: 10
