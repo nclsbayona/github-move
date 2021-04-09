@@ -77,7 +77,7 @@ autoscaling:
   targetMemoryUtilizationPercentage: 80
 
 nodeSelector:
-  "upchieve.org/usage": "compute"
+  upchieve.org/purpose: apps
 
 tolerations:
 - key: upchieve.org/purpose
