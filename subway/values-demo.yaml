@@ -79,7 +79,11 @@ autoscaling:
 
 nodeSelector: {}
 
-tolerations: []
+tolerations:
+- key: upchieve.org/purpose
+  operator: Equal
+  value: apps
+  effect: NoSchedule
 
 affinity: {}
 
