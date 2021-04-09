@@ -96,8 +96,8 @@ ambassador:
       getambassador.io/rolloutId: 9dfbe24f-c5dd-4755-9c57-7663a30e5ec9
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/volunteer-verification-client
-      tag: 8ca23390fdf10779712bc78c4455e055a8247050
+      repository: registry.gitlab.com/upchieve/subway/update-redis-conn
+      tag: 34e8a730691be7fd003173688d418973c7ff3b09
     replicas: 1
     steps:
     - setWeight: 10
