@@ -97,7 +97,7 @@ ambassador:
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/update-redis-conn
-      tag: 34e8a730691be7fd003173688d418973c7ff3b09
+      tag: d6a3010754dfaba31d8db6668c6e519492570eb9
     replicas: 1
     steps:
     - setWeight: 10
