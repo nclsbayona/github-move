@@ -93,40 +93,13 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 9dfbe24f-c5dd-4755-9c57-7663a30e5ec9
+      getambassador.io/rolloutId: 350bb79b-78c8-4a73-804e-9b1d5b4d6399
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-redis-conn
-      tag: d6a3010754dfaba31d8db6668c6e519492570eb9
+      repository: registry.gitlab.com/upchieve/subway/update-worker-init-logging
+      tag: a64e1c5759634f497a4eab27073567a8a5d67578
     replicas: 1
     steps:
-    - setWeight: 10
-    - pause:
-        duration: 1
-    - setWeight: 20
-    - pause:
-        duration: 1
-    - setWeight: 30
-    - pause:
-        duration: 1
-    - setWeight: 40
-    - pause:
-        duration: 1
-    - setWeight: 50
-    - pause:
-        duration: 1
-    - setWeight: 60
-    - pause:
-        duration: 1
-    - setWeight: 70
-    - pause:
-        duration: 1
-    - setWeight: 80
-    - pause:
-        duration: 1
     - setWeight: 90
     - pause:
-        duration: 1
-    - setWeight: 100
-    - pause:
-        duration: 1
+        duration: 10
