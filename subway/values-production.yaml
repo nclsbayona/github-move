@@ -107,11 +107,11 @@ affinity:
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: e92165a1-2539-45aa-851a-a9bcf3198908
+      getambassador.io/rolloutId: 41aef74e-f67c-40e5-a9eb-5252cdbd66c7
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-redis-conn
-      tag: d6a3010754dfaba31d8db6668c6e519492570eb9
+      repository: registry.gitlab.com/upchieve/subway/update-worker-init-logging
+      tag: 037629c6ebc35433a8941b2683d042fc810de343
     replicas: 1
     steps:
     - setWeight: 90
