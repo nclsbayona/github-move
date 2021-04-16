@@ -93,13 +93,40 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: d741904b-b6ae-4f0d-a50a-a5dc37b11c91
-      getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
+      getambassador.io/rolloutId: 013350e3-d1a3-434a-a3ae-ce159c50538a
+      getambassador.io/webhookUrl: https://beta-app.datawire.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-worker-init-logging
-      tag: 2703bf85e02cb89473cf24f96f220895c902c31b
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 090d0d09ffd06f2f704444ce7d9e23c578e057d3
     replicas: 1
     steps:
+    - setWeight: 10
+    - pause:
+        duration: 3
+    - setWeight: 20
+    - pause:
+        duration: 3
+    - setWeight: 30
+    - pause:
+        duration: 3
+    - setWeight: 40
+    - pause:
+        duration: 3
+    - setWeight: 50
+    - pause:
+        duration: 3
+    - setWeight: 60
+    - pause:
+        duration: 3
+    - setWeight: 70
+    - pause:
+        duration: 3
+    - setWeight: 80
+    - pause:
+        duration: 3
     - setWeight: 90
     - pause:
-        duration: 10
+        duration: 3
+    - setWeight: 100
+    - pause:
+        duration: 3
