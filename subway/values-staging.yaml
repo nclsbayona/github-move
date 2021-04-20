@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: d741904b-b6ae-4f0d-a50a-a5dc37b11c91
+      getambassador.io/rolloutId: 5851b106-f330-4676-9c96-34ee7b059343
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-worker-init-logging
-      tag: 2703bf85e02cb89473cf24f96f220895c902c31b
+      repository: registry.gitlab.com/upchieve/subway/656-jobs-catch-and-log-their-own-errors-internally-making-it-di
+      tag: 4f5d755134340364216f039efa3a1ae21a3e056d
     replicas: 1
     steps:
     - setWeight: 90
