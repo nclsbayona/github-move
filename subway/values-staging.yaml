@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 5851b106-f330-4676-9c96-34ee7b059343
+      getambassador.io/rolloutId: 25e46397-b5a6-499b-9984-09fdafb8560d
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/656-jobs-catch-and-log-their-own-errors-internally-making-it-di
-      tag: 4f5d755134340364216f039efa3a1ae21a3e056d
+      tag: 44fbab78ec3425f2b22ae446152d8437483cd672
     replicas: 1
     steps:
     - setWeight: 90
