@@ -107,13 +107,13 @@ affinity:
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 24b5f64d-133a-43fa-ac6c-1c809be6b238
+      getambassador.io/rolloutId: 9061c807-8555-42c9-8c79-dd3a92f4608c
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-worker-init-logging
-      tag: 2703bf85e02cb89473cf24f96f220895c902c31b
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 8bde5fa8c524d6aeba01406288569b1257c66d2b
     replicas: 1
     steps:
-    - setWeight: 90
+    - setWeight: 80
     - pause:
         duration: 10
