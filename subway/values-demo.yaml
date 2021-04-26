@@ -93,13 +93,40 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 4ab560a9-57fb-4f21-ad42-e56a5e6c02cf
-      getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
+      getambassador.io/rolloutId: d0b1b8c4-ebba-4e50-b321-87a28270bd60
+      getambassador.io/webhookUrl: https://beta-app.datawire.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: 553ec180f660490a68eb51b06ef0f5930f2c3cb1
+      repository: registry.gitlab.com/upchieve/subway/559-convert-services-schoolservice-to-ts
+      tag: 8bde5fa8c524d6aeba01406288569b1257c66d2b
     replicas: 1
     steps:
+    - setWeight: 10
+    - pause:
+        duration: 60
+    - setWeight: 20
+    - pause:
+        duration: 60
+    - setWeight: 30
+    - pause:
+        duration: 60
+    - setWeight: 40
+    - pause:
+        duration: 60
+    - setWeight: 50
+    - pause:
+        duration: 60
+    - setWeight: 60
+    - pause:
+        duration: 60
+    - setWeight: 70
+    - pause:
+        duration: 60
+    - setWeight: 80
+    - pause:
+        duration: 60
     - setWeight: 90
     - pause:
-        duration: 10
+        duration: 60
+    - setWeight: 100
+    - pause:
+        duration: 60
