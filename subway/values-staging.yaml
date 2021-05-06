@@ -93,13 +93,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: e704b5f5-225e-4229-acd2-64f5610a11ca
+      getambassador.io/rolloutId: c080f97a-d251-44fa-81dc-0107a0e6d9fb
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/614-add-a-catch-clause-to-every-then-in-frontend-router
-      tag: 2572de905355d420c7a444453bad1903e1faf909
+      repository: registry.gitlab.com/upchieve/subway/654-store-contact-form-submissions
+      tag: 8d2b4acc58b76fda0a57b23dbd88335a73a9a57c
     replicas: 1
     steps:
-    - setWeight: 90
+    - setWeight: 50
     - pause:
-        duration: 10
+        duration: 5
+    - setWeight: 100
+    - pause:
+        duration: 5
