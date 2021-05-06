@@ -93,16 +93,13 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: b7d0a3bc-b69c-4760-a59b-f1bd7f55a757
+      getambassador.io/rolloutId: 4318b697-847c-493a-9492-7a13f706d6c0
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: a925bc29f11cec9110f3e148dd78609d408d6c01
+      repository: registry.gitlab.com/upchieve/subway/add-is-student-banned
+      tag: f7769c1c301f10428cefce7ba6c32cd1a5250578
     replicas: 1
     steps:
-    - setWeight: 50
+    - setWeight: 80
     - pause:
-        duration: 5
-    - setWeight: 100
-    - pause:
-        duration: 5
+        duration: 10
