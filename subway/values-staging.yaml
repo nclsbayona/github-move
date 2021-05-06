@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: c080f97a-d251-44fa-81dc-0107a0e6d9fb
+      getambassador.io/rolloutId: 3acc46ca-de44-4df7-8bb4-8298f57fb017
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/654-store-contact-form-submissions
-      tag: 8d2b4acc58b76fda0a57b23dbd88335a73a9a57c
+      tag: 48457850b4107254b0200bb38e39b44500377104
     replicas: 1
     steps:
     - setWeight: 50
