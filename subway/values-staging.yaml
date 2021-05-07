@@ -93,16 +93,13 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: c7dd22be-1541-4740-b30f-2e08337ae925
+      getambassador.io/rolloutId: 4943625d-1a97-437f-bc12-0d4f2b10808d
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/654-contact-form-submission-tweaks
-      tag: b9ac6608028442f0e263dce6e258529abe407b56
+      repository: registry.gitlab.com/upchieve/subway/whiteboard-connetion-hotfix
+      tag: a67ad709c0531de2418925e598ea046e9ce9dd88
     replicas: 1
     steps:
-    - setWeight: 50
+    - setWeight: 90
     - pause:
-        duration: 5
-    - setWeight: 100
-    - pause:
-        duration: 5
+        duration: 10
