@@ -93,13 +93,40 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 4ab560a9-57fb-4f21-ad42-e56a5e6c02cf
-      getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
+      getambassador.io/rolloutId: f7c64b96-640c-4758-b1fc-6eae46781127
+      getambassador.io/webhookUrl: https://beta-app.datawire.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/main
-      tag: 553ec180f660490a68eb51b06ef0f5930f2c3cb1
+      tag: 04fa7072e83e3d759f5fbef27caf15a0d4dc4550
     replicas: 1
     steps:
+    - setWeight: 10
+    - pause:
+        duration: 60
+    - setWeight: 20
+    - pause:
+        duration: 60
+    - setWeight: 30
+    - pause:
+        duration: 60
+    - setWeight: 40
+    - pause:
+        duration: 60
+    - setWeight: 50
+    - pause:
+        duration: 60
+    - setWeight: 60
+    - pause:
+        duration: 60
+    - setWeight: 70
+    - pause:
+        duration: 60
+    - setWeight: 80
+    - pause:
+        duration: 60
     - setWeight: 90
     - pause:
-        duration: 10
+        duration: 60
+    - setWeight: 100
+    - pause:
+        duration: 60
