@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: a2902516-fddb-4111-89e1-28bf75832415
+      getambassador.io/rolloutId: 91e9b7d9-7856-4a7f-9d8c-c848826ecb1b
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/refactor-auth-service
-      tag: 682b00f9828acceecacc16d5bbf0cb5c9e12a131
+      repository: registry.gitlab.com/upchieve/subway/698-resolve-missing-seconday-texts
+      tag: 5076d4e543f184ba8236ac944981a753a0a6f718
     replicas: 1
     steps:
     - setWeight: 90
