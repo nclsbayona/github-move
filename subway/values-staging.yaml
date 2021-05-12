@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 070ccf65-1f44-4ab8-955b-1f3f51a3db11
+      getambassador.io/rolloutId: da24877e-dd6d-483d-a964-9ca2c93a09cc
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/refactor-auth-service
-      tag: d6a37befaccf6383b8f7a88cf867dc40adbcb111
+      repository: registry.gitlab.com/upchieve/subway/volunteer-analytics-report
+      tag: 15f00b250dcb46b6e6c249b4daac0b14f74c0a46
     replicas: 1
     steps:
     - setWeight: 90
