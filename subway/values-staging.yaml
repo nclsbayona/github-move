@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: da24877e-dd6d-483d-a964-9ca2c93a09cc
+      getambassador.io/rolloutId: 28ec7cad-c968-424b-b197-da3af56118e8
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/volunteer-analytics-report
-      tag: 15f00b250dcb46b6e6c249b4daac0b14f74c0a46
+      repository: registry.gitlab.com/upchieve/subway/fix-analytics-report
+      tag: f6d059cc13057cab0fe555d91444fbb0a4ad93fd
     replicas: 1
     steps:
     - setWeight: 90
