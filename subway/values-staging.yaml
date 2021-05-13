@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: f2749835-9b53-42f1-8636-c725e13a135b
+      getambassador.io/rolloutId: ce620b06-77f7-4bc4-97e2-36b4b20ef999
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/main
-      tag: 82c0591eb5d864b835c64ccec6ff1ebe3a1654cf
+      repository: registry.gitlab.com/upchieve/subway/refactor-telecom-calculator
+      tag: 28acc9c3d84249a8f5ac914976d523fc752682a5
     replicas: 1
     steps:
     - setWeight: 90
