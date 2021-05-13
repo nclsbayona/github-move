@@ -93,7 +93,7 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 13fe6278-a1a0-4372-b3af-1e3248aab3e6
+      getambassador.io/rolloutId: e61b30aa-2385-4cbb-b546-32299975d2ee
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/693-switch-ordering-of-student-waitlist
