@@ -93,13 +93,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: ce620b06-77f7-4bc4-97e2-36b4b20ef999
+      getambassador.io/rolloutId: 13fe6278-a1a0-4372-b3af-1e3248aab3e6
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/refactor-telecom-calculator
-      tag: 28acc9c3d84249a8f5ac914976d523fc752682a5
+      repository: registry.gitlab.com/upchieve/subway/693-switch-ordering-of-student-waitlist
+      tag: 707bd7169b807a466d7a492fddaa5a401aa87bf1
     replicas: 1
     steps:
-    - setWeight: 90
+    - setWeight: 50
     - pause:
-        duration: 10
+        duration: 5
+    - setWeight: 100
+    - pause:
+        duration: 5
