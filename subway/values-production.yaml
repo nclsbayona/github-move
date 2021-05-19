@@ -107,11 +107,11 @@ affinity:
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 26b67ca3-f7c4-40ad-8926-d5ab095a02c1
+      getambassador.io/rolloutId: e808c37c-39a6-421b-bec3-6192d2deb091
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/main
-      tag: 412d5eb5023e7163feadab827dd33be221ca80e2
+      tag: 2ad2b9eb4675026e8ed861f5971e31e2474ee556
     replicas: 1
     steps:
     - setWeight: 90
