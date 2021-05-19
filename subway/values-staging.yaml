@@ -26,8 +26,8 @@ serviceAccount:
   name: ""
 
 podAnnotations:
-  'linkerd.io/inject': enabled
-  'getambassador.io/inject-traffic-agent': enabled
+  "linkerd.io/inject": enabled
+  "getambassador.io/inject-traffic-agent": enabled
 
 podSecurityContext:
   fsGroup: 2000
@@ -35,7 +35,7 @@ podSecurityContext:
 securityContext:
   capabilities:
     drop:
-    - ALL
+      - ALL
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
@@ -81,10 +81,10 @@ nodeSelector:
   upchieve.org/purpose: apps
 
 tolerations:
-- key: upchieve.org/purpose
-  operator: Equal
-  value: apps
-  effect: NoSchedule
+  - key: upchieve.org/purpose
+    operator: Equal
+    value: apps
+    effect: NoSchedule
 
 affinity: {}
 
@@ -96,13 +96,10 @@ ambassador:
       getambassador.io/rolloutId: 139a323e-012c-458f-aa8c-30ea58dd9d4c
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/switch-to-paketo-buildpacks
-      tag: 9c23322310e7eb93ea8820e6ba298140c4d6830a
+      repository: registry.gitlab.com/joannesenoren/subway/fix-email-auth-service
+      tag: e881d93ee29fef5ab67a11930587fc457b508b32
     replicas: 1
     steps:
-    - setWeight: 50
-    - pause:
-        duration: 5
-    - setWeight: 100
-    - pause:
-        duration: 5
+      - setWeight: 90
+      - pause:
+          duration: 10
