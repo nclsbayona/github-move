@@ -93,13 +93,16 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: c0c8a2af-fcbe-4297-aa71-c800e56232ad
+      getambassador.io/rolloutId: 9372ef1e-5591-422d-b601-3575d4819f68
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/update-upchieve101-threshold
-      tag: 8ca250f32dd4c1ad6c892273a4e43905f5605fcc
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: 2ad2b9eb4675026e8ed861f5971e31e2474ee556
     replicas: 1
     steps:
-    - setWeight: 90
+    - setWeight: 50
     - pause:
-        duration: 10
+        duration: 5
+    - setWeight: 100
+    - pause:
+        duration: 5
