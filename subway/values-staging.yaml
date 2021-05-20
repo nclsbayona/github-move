@@ -93,13 +93,13 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 139a323e-012c-458f-aa8c-30ea58dd9d4c
+      getambassador.io/rolloutId: 5bdbe74e-978c-464b-a55d-fa8e757798e9
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/joannesenoren/subway/fix-email-auth-service
-      tag: e881d93ee29fef5ab67a11930587fc457b508b32
+      repository: registry.gitlab.com/upchieve/subway/telecom-hours-job
+      tag: 4d0b2983dcef718d18d79589f72aebeaf4795d23
     replicas: 1
     steps:
-      - setWeight: 90
-      - pause:
-          duration: 10
+    - setWeight: 90
+    - pause:
+        duration: 10
