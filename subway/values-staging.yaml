@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 42b19d04-01fe-407e-91f9-02a6f39c1473
+      getambassador.io/rolloutId: 29dcb306-750d-470e-94bb-a4c5632ed028
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/602-update-chat-component-so-it-doesn-t-autoscroll
-      tag: ea8716ca51ee2782b99512a209aaee4d9bc87133
+      repository: registry.gitlab.com/upchieve/subway/582-convert-router-eligibility-index-to-ts
+      tag: 55fda4c40fcdaba903840a5f755cb959e9f71e51
     replicas: 1
     steps:
     - setWeight: 90
