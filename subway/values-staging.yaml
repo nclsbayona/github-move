@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 29bb47d6-3fa5-418a-af96-197a1433b73f
+      getambassador.io/rolloutId: 4527e6b5-2739-4e46-8de5-0da69c3922de
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/telecom-dashboard
-      tag: b835d23dd1a4862ff7a18af444b4d2d82924d896
+      repository: registry.gitlab.com/upchieve/subway/telecom-dashboard-fix
+      tag: bfa14cdb8ffed0e408c95de2b2f5a42cfdcb4a79
     replicas: 1
     steps:
     - setWeight: 90
