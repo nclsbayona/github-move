@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 29dcb306-750d-470e-94bb-a4c5632ed028
+      getambassador.io/rolloutId: 29bb47d6-3fa5-418a-af96-197a1433b73f
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/582-convert-router-eligibility-index-to-ts
-      tag: 55fda4c40fcdaba903840a5f755cb959e9f71e51
+      repository: registry.gitlab.com/upchieve/subway/telecom-dashboard
+      tag: b835d23dd1a4862ff7a18af444b4d2d82924d896
     replicas: 1
     steps:
     - setWeight: 90
