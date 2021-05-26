@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: c55d5bf5-8a6d-4b54-8671-74131ab3e405
+      getambassador.io/rolloutId: 033c1a49-546f-4f84-a44c-ea2b5fd28dcd
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/cors-settings
-      tag: 7a9bc13d28cc80ff5f3cb40604a83e5da82db059
+      repository: registry.gitlab.com/upchieve/subway/713-clickjacking-prevention
+      tag: fe4c7864ecd6596268eaf1ec9332c66521f1c0df
     replicas: 1
     steps:
     - setWeight: 90
