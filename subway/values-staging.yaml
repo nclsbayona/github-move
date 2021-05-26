@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 4527e6b5-2739-4e46-8de5-0da69c3922de
+      getambassador.io/rolloutId: c55d5bf5-8a6d-4b54-8671-74131ab3e405
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/telecom-dashboard-fix
-      tag: bfa14cdb8ffed0e408c95de2b2f5a42cfdcb4a79
+      repository: registry.gitlab.com/upchieve/subway/cors-settings
+      tag: 7a9bc13d28cc80ff5f3cb40604a83e5da82db059
     replicas: 1
     steps:
     - setWeight: 90
