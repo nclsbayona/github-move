@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 86408547-86b4-46f8-bf6a-5b1abecb41d5
+      getambassador.io/rolloutId: b72ce35b-a3f6-40aa-b752-f8fcb815fd62
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/partner-no-school-required
-      tag: 551f431c8e7e8751b105580e282146a542014cf1
+      repository: registry.gitlab.com/upchieve/subway/session-service-refactor
+      tag: 735741b502b6b299dab20965eb4a68c726f21022
     replicas: 1
     steps:
     - setWeight: 90
