@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 7bbe74a9-df9d-4360-9955-804c4bc8a458
+      getambassador.io/rolloutId: 1e3c8eeb-384e-4358-85e4-e806a54a73f5
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/session-service-refactor
-      tag: a175920baf5c5e250dbfde8a39f49fe750317fbc
+      repository: registry.gitlab.com/upchieve/subway/713-clickjacking-prevention
+      tag: a9ab5222956e45745c45f099b1e7dee969cd0234
     replicas: 1
     steps:
     - setWeight: 90
