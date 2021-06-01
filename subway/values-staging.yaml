@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 9d09b770-2734-40d8-9475-373adea80338
+      getambassador.io/rolloutId: 0d32dbdb-3663-4899-85d8-ceac4cec564b
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/capture-partner-query-params
-      tag: 23766b89ca628b925e04ccbdf9cf69eed1f77888
+      repository: registry.gitlab.com/upchieve/subway/session-service-refactor
+      tag: a4325be8cde82c63fb457edb01dad24f5d1230a2
     replicas: 1
     steps:
     - setWeight: 90
