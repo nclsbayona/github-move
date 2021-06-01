@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 3ccd4c30-ab93-49dc-8590-ec155ac01b4d
+      getambassador.io/rolloutId: 4a1f93ce-abe5-44d1-87d3-c065e499c413
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
       repository: registry.gitlab.com/upchieve/subway/713-clickjacking-prevention
-      tag: ad151b16dce0b53738bb81ee8d4f825ffb5a8a49
+      tag: f81026f0a0dbcec2edb787bea65a81e76b7244a0
     replicas: 1
     steps:
     - setWeight: 90
