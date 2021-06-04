@@ -93,8 +93,8 @@ affinity: {}
 ambassador:
   rollouts:
     image:
-      repository: registry.gitlab.com/upchieve/subway/assistments-document
-      tag: 9bd3924af9596e06cb9a089c81dde970ed179eb2
+      repository: registry.gitlab.com/upchieve/subway/cors-settings
+      tag: 186b8f73900ca8018ecf499c80337e22b7369483
     replicas: 1
     steps:
       - setWeight: 90
