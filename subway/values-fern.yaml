@@ -94,7 +94,7 @@ ambassador:
   rollouts:
     image:
       repository: registry.gitlab.com/upchieve/subway/assistments-document
-      tag: c4c3a731fea94d7c2740105ac7d8e144982ff3fb
+      tag: 9bd3924af9596e06cb9a089c81dde970ed179eb2
     replicas: 1
     steps:
       - setWeight: 90
