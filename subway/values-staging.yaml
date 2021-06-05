@@ -93,11 +93,11 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: 423c8305-565c-4aed-aad8-737c3ed13591
+      getambassador.io/rolloutId: eabe9827-a9e0-4fd0-92fe-81d934112a1f
       getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/713-additional-csp-updates
-      tag: 12dc2d17c1aa66d9e612dad93d1d2567260c65a6
+      repository: registry.gitlab.com/upchieve/subway/cors-settings
+      tag: fdbc4c0c13a4ffdcb5c185a98373d5ccfcc11299
     replicas: 1
     steps:
     - setWeight: 90
