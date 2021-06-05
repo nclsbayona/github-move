@@ -14,7 +14,7 @@ fullnameOverride: ""
 podDisruptionBudget:
   enabled: false
 
-publicSubdomain: staging
+publicSubdomain: hackers
 
 serviceAccount:
   # Specifies whether a service account should be created
