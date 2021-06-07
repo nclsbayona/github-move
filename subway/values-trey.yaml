@@ -94,7 +94,7 @@ ambassador:
   rollouts:
     image:
       repository: registry.gitlab.com/upchieve/subway/602-update-chat-component-so-it-doesn-t-autoscroll
-      tag: 0bcab18cf79c6a8ff3bc0c43073fd63d8e134720
+      tag: 7ffa30700ca9a8755fcdce5d172565bc27e383a8
     replicas: 1
     steps:
       - setWeight: 90
