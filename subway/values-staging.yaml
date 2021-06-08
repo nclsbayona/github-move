@@ -93,13 +93,40 @@ affinity: {}
 ambassador:
   rollouts:
     annotations:
-      getambassador.io/rolloutId: eabe9827-a9e0-4fd0-92fe-81d934112a1f
-      getambassador.io/webhookUrl: https://app.getambassador.io/cloud/webhooks/rollout
+      getambassador.io/rolloutId: 1d0eaecd-3c9e-4dc9-8463-ed1d313625e3
+      getambassador.io/webhookUrl: https://beta-app.datawire.io/cloud/webhooks/rollout
     image:
-      repository: registry.gitlab.com/upchieve/subway/cors-settings
-      tag: fdbc4c0c13a4ffdcb5c185a98373d5ccfcc11299
-    replicas: 1
+      repository: registry.gitlab.com/upchieve/subway/main
+      tag: bbfdc0fc5971953dea1ae2856dfaa9efdcec9afe
+    replicas: 2
     steps:
+    - setWeight: 10
+    - pause:
+        duration: 60
+    - setWeight: 20
+    - pause:
+        duration: 60
+    - setWeight: 30
+    - pause:
+        duration: 60
+    - setWeight: 40
+    - pause:
+        duration: 60
+    - setWeight: 50
+    - pause:
+        duration: 60
+    - setWeight: 60
+    - pause:
+        duration: 60
+    - setWeight: 70
+    - pause:
+        duration: 60
+    - setWeight: 80
+    - pause:
+        duration: 60
     - setWeight: 90
     - pause:
-        duration: 10
+        duration: 60
+    - setWeight: 100
+    - pause:
+        duration: 60
